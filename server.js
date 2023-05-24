@@ -1,4 +1,4 @@
-const express = require('express');
+// const express = require('express');
 const mysql = require('mysql2');
 const db = require("./demo")
 
@@ -153,4 +153,23 @@ function displayMainMenu() {
   });
 }
 
-displayMainMenu()
+
+
+function displayMainMenu1() {
+  console.clear();
+  inquirer.prompt([
+    {
+      name: "pizza_crust",
+      type: "list",
+      message: "Choose your crust:",
+      choices: ["Thin Crust", "Stuffed Crust", "Pan"],
+    },
+  ])
+  .then((answer) => {
+    console.log(answer.pizza_crust);
+    displayMainMenu1();
+  });
+
+}
+
+displayMainMenu1()
